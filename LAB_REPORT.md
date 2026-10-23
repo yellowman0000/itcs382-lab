@@ -192,5 +192,5 @@ In Project Phase 2, I will design early for high functional cohesion and loose d
 
 | AI tool and exact model | Purpose | Files or parts that it produced or changed | How you checked its output |
 | --- | --- | --- | --- |
-| Gemini 4 Argon High | Code review, generating poor/good designs, bug fixing, and report drafting | `reviews/*.md`, `parcelpoint` fixes, `bikeshare-poor`, `bikeshare-good`, and `LAB_REPORT.md` (Tasks 2–5) | Compiled and tested with `mvn package`, verified CLI executions, checked git diffs, and inspected SonarQube panels. |
+| Gemini 4 Argon High | Code review, generating poor/good designs, bug fixing, and report drafting | `reviews/*.md`, `parcelpoint` fixes, `bikeshare-poor`, `bikeshare-good`, and `LAB_REPORT.md` (Tasks 2–4)(for help me to answer the task) | Compiled and tested with `mvn package`, verified CLI executions, checked git diffs, and inspected SonarQube panels. |
 
