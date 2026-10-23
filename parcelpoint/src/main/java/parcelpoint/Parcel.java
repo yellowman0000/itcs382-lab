@@ -32,4 +32,16 @@ public class Parcel {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public double fee(int days) {
+        if (days <= 3) {
+            return 0;
+        }
+        if (size == 1) {
+            return (days - 3) * 10.0;
+        } else if (size == 2) {
+            return (days - 3) * 15.0;
+        }
+        return (days - 3) * 20.0;
+    }
 }
