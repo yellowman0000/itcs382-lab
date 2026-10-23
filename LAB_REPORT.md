@@ -141,7 +141,7 @@ P1,PICKED_UP
 | Date | 23/10/2026 | 23/10/2026 |
 | AI tool and exact model | Gemini 4 Argon | Gemini 4 Argon |
 | Prompt (B or C as given, or your changed prompt in full) | Prompt B as given | Prompt C as given |
-| Builds with mvn package (yes or no) | yes | yes |
+| Builds with mvn package (yes or no) | yes(but need to fix) | yes |
 | Number of classes, interfaces, enums and records | 2 (2 classes) | 8 (5 classes, 1 interface, 2 enums) |
 | SonarQube issues, total | 16 | 7 |
 | SonarQube issues, by rule | java:S106: 8, java:S1104: 4, java:S1444: 4 | java:S106: 7 |
@@ -178,12 +178,19 @@ This multi-class ripple effect increases coupling and makes the codebase error-p
 
 5.1 What does SonarQube check, and what does it not check? Answer with examples from this lab.
 
+SonarQube checks static, rule-based code quality issues and bugs—such as comparing strings with `==` in `ParcelService`, unclosed `FileWriter` resources, and unused imports—but it does not check high-level architectural design quality, completely missing procedural cohesion, common coupling, and connascence of convention in `bikeshare-poor`.
+
 5.2 When should you not trust the AI review? Give an example from this lab.
 
+You should not trust an AI review when it flags context-dependent idioms without considering JVM runtime realities, such as reporting an unclosed `Scanner(System.in)` in `Main.java` as a resource leak when closing it would inappropriately terminate standard input across the entire JVM. Always verify AI findings against compiler rules, runtime execution, and actual system requirements before making changes.
+
 5.3 What will you do differently in Project Phase 2 after this lab?
+
+In Project Phase 2, I will design early for high functional cohesion and loose data coupling using enums and interfaces instead of numeric codes and boolean control flags. I will also combine SonarQube in the IDE to catch implementation bugs continuously with AI review prompts to inspect architectural coupling and cohesion before merging.
 
 ## AI usage declaration
 
 | AI tool and exact model | Purpose | Files or parts that it produced or changed | How you checked its output |
 | --- | --- | --- | --- |
-| | | | |
+| Gemini 4 Argon High | Code review, generating poor/good designs, bug fixing, and report drafting | `reviews/*.md`, `parcelpoint` fixes, `bikeshare-poor`, `bikeshare-good`, and `LAB_REPORT.md` (Tasks 2–5) | Compiled and tested with `mvn package`, verified CLI executions, checked git diffs, and inspected SonarQube panels. |
+
