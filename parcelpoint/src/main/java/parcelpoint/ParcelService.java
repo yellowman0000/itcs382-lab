@@ -75,6 +75,7 @@ public class ParcelService {
                 writer.write(parcel.getCode() + "," + parcel.status + "\n");
             }
         } catch (IOException e) {
+            // Ignore file write exception
         }
     }
 }
